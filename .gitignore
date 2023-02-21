@@ -1,0 +1,37 @@
+# idea ignore
+.idea/
+*.iws
+*.iml
+*.ipr
+out
+gen
+
+# Compiled class file
+*.class
+
+# maven ignore
+target/
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# system ignore
+.DS_Store
+Thumbs.db
+
+# package ignore
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# node ignore
+node_modules/
+dist/
