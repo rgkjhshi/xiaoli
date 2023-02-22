@@ -12,8 +12,8 @@ const name = defaultSettings.title || 'vue Element Admin' // page title
 // use administrator privileges to execute the command line.
 // For example, Mac: sudo npm run
 // You can change the port by the following method:
-// port = 8081 npm run dev OR npm run dev --port = 9527
-const port = process.env.port || process.env.npm_config_port || 8081 // dev port
+// port = 9527 npm run dev OR npm run dev --port = 9527
+const port = process.env.port || process.env.npm_config_port || 8080 // dev port
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -35,6 +35,19 @@ module.exports = {
     overlay: {
       warnings: false,
       errors: true
+    },
+    // 这里是做转发的，可以转发到mock服务上，也可以转发到自己的服务上
+    // 若有登陆问题，可在浏览器里输入转发到的服务上种下token
+    proxy: {
+      // change xxx-api/login => mock/login
+      // detail: https://cli.vuejs.org/config/#devserver-proxy
+      [process.env.VUE_APP_BASE_API]: {
+        target: `http://localhost:${port}/`,
+        changeOrigin: true,
+        pathRewrite: {
+          ['^' + process.env.VUE_APP_BASE_API]: ''
+        }
+      }
     },
     before: require('./mock/mock-server.js')
   },
