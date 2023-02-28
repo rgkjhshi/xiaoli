@@ -71,6 +71,10 @@ export const constantRoutes = [
     hidden: true
   },
   {
+    path: '/infoList',
+    component: () => import('@/views/fei-biao/infoList')
+  },
+  {
     path: '/',
     component: Layout,
     redirect: '/dashboard',
